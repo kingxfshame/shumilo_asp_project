@@ -21,5 +21,10 @@ namespace shumilo_asp_project.Controllers
             ViewBag.Title = "Register Page";
             return View();
         }
+        public ActionResult Login()
+        {
+            ViewBag.Title = "Login Page";
+            return View();
+        }
     }
 }

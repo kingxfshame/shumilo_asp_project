@@ -21,16 +21,19 @@
                 <label for="exampleInputPassword1">Confirm your Password</label>
                 <input type="password" class="form-control" id="password_second" placeholder="Password">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Submit <i class="fa fa-check" aria-hidden="true"></i> </button>
         </form>
     </div>
 </div>
 <script>
+    $(document).ready(function () {
+
+
     $('#register').submit(function (e) {
         e.preventDefault(); // выключает перезапуск страницы
-        const email = $('email').val();
-        const password = $('password').val();
-        const password_second = $('password_second').val();
+        const email = $('#email').val();
+        const password = $('#password').val();
+        const password_second = $('#password_second').val();
         const data = {
             'email': email,
             'password': password,
@@ -39,12 +42,16 @@
 
         $.ajax({
             method: "post",
-            url: "",
+            url: "../../api/user",
             contentType: "application/json",
             dataType: "json",
             data: JSON.stringify(data)
         }).done(function (data) {
+            if (data == "Success") {
+                window.location.href = "../../Home/Success";
+            }
             console.log(data);
         });
     })
+  })
 </script>
