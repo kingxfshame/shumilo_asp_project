@@ -13,7 +13,9 @@ namespace shumilo_asp_project.Controllers
         {
             ViewBag.Title = "Home Page";
             DataBaseContext db = new DataBaseContext();
-            ViewBag.user = db.Users.Where(x => x.login == "admin").FirstOrDefault();
+            ViewBag.user = db.Users;
+            ViewBag.names = db.Nimed;
+            //ViewBag.user = db.Users.Where(x => x.login == "admin").FirstOrDefault();
             return View();
         }
         public ActionResult Register()
@@ -28,7 +30,7 @@ namespace shumilo_asp_project.Controllers
         }
         public ActionResult LogOut()
         {
-            Session["email"] = "";
+            Session.Clear();
 
             return View("index");
         }

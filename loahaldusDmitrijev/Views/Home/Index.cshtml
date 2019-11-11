@@ -4,21 +4,33 @@
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
-<div class="row">
-    <div class="col-md-4">
         @*<h2>@ViewBag.user.ID</h2>
         <h2>@ViewBag.user.login</h2>
         <h2>@ViewBag.user.password</h2>
         <h2>@ViewBag.user.roleID</h2>*@
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
+<div class="container">
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">
+                    Name in native language
+                </th>
+                <th scope="col">Name in a foreign language</th>
+                <th scope="col">Sex</th>
+            </tr>
+        </thead>
+        <tbody>
+               @foreach (var x in ViewBag.names)
+                {
+                    <tr>
+                        <th scope="row">@x.ID</th>
+                        <td>@x.eestoni_nimi</td>
+                        <td>@x.english_nimi</td>
+                        <td>@x.sex</td>
+                    </tr>
+
+            }
+        </tbody>
+    </table>
 </div>

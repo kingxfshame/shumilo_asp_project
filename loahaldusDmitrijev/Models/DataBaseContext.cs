@@ -9,6 +9,7 @@ namespace shumilo_asp_project.Models
     public class DataBaseContext : DbContext
     {
         public DbSet<User> Users { get; set; }
+        public DbSet<Nimi> Nimed { get; set; }
         //public DbSet<Role> Roles { get; set; }
 
         public DataBaseContext() : base("DbContext")
@@ -22,6 +23,32 @@ namespace shumilo_asp_project.Models
                 password = Hash.ComputeSha256Hash("admin"),
                 roleID = 2,
             });
+            Nimed.Add(new Nimi()
+            {
+                eestoni_nimi = "Artur",
+                english_nimi = "Arthur",
+                sex = "Male",
+
+            });
+            Nimed.Add(new Nimi()
+            {
+                eestoni_nimi = "Vassili",
+                english_nimi = "Vasiliy",
+                sex = "Male",
+
+            });
+
+            Nimed.Add(new Nimi()
+            {
+                eestoni_nimi = "Anna",
+                english_nimi = "Anya",
+                sex = "Female",
+
+            });
+
+
+
+
 
             SaveChanges();
         }
