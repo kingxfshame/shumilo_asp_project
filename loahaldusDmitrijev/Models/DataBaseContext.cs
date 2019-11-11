@@ -17,34 +17,34 @@ namespace shumilo_asp_project.Models
             if (!Database.Exists())
                 Database.Create();
 
-            Users.Add(new User()
-            {
-                login = "artur.kexpa@gmail.com",
-                password = Hash.ComputeSha256Hash("admin"),
-                roleID = 2,
-            });
-            Nimed.Add(new Nimi()
-            {
-                eestoni_nimi = "Artur",
-                english_nimi = "Arthur",
-                sex = "Male",
+            //Users.Add(new User()
+            //{
+            //    login = "artur.kexpa@gmail.com",
+            //    password = Hash.ComputeSha256Hash("admin"),
+            //    roleID = 2,
+            //});
+            //Nimed.Add(new Nimi()
+            //{
+            //    eestoni_nimi = "Artur",
+            //    english_nimi = "Arthur",
+            //    sex = "Male",
 
-            });
-            Nimed.Add(new Nimi()
-            {
-                eestoni_nimi = "Vassili",
-                english_nimi = "Vasiliy",
-                sex = "Male",
+            //});
+            //Nimed.Add(new Nimi()
+            //{
+            //    eestoni_nimi = "Vassili",
+            //    english_nimi = "Vasiliy",
+            //    sex = "Male",
 
-            });
+            //});
 
-            Nimed.Add(new Nimi()
-            {
-                eestoni_nimi = "Anna",
-                english_nimi = "Anya",
-                sex = "Female",
+            //Nimed.Add(new Nimi()
+            //{
+            //    eestoni_nimi = "Anna",
+            //    english_nimi = "Anya",
+            //    sex = "Female",
 
-            });
+            //});
 
 
 

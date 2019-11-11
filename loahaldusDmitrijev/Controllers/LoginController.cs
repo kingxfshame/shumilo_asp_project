@@ -25,7 +25,7 @@ namespace shumilo_asp_project.Controllers
                     if ((db.Users.Where(x => x.login == user.email).FirstOrDefault().password == password))
                     {
                         HttpContext.Current.Session["email"] = user.email;
-                        
+                        HttpContext.Current.Session["roleID"] = user.roleID;
                         result = "Success";
                     }
                 }

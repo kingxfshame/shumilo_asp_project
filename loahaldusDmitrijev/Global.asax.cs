@@ -16,7 +16,7 @@ namespace shumilo_asp_project
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new DropCreateDatabaseAlways<DataBaseContext>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataBaseContext>());
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
