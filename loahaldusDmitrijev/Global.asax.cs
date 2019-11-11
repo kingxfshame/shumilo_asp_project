@@ -25,13 +25,14 @@ namespace shumilo_asp_project
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
         }
 
-        protected void ApplicationPostAuthorizeRequest()
+        protected void Application_PostAuthorizeRequest()
         {
             if (IsWebApiRequest())
             {
                 HttpContext.Current.SetSessionStateBehavior(SessionStateBehavior.Required);
             }
         }
+
 
         private bool IsWebApiRequest()
         {

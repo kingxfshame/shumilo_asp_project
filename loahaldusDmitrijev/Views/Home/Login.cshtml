@@ -19,3 +19,31 @@
             </form>
         </div>
     </div>
+    <script>
+    $(document).ready(function () {
+
+
+    $('#login').submit(function (e) {
+        e.preventDefault(); // выключает перезапуск страницы
+        const email = $('#email').val();
+        const password = $('#password').val();
+        const data = {
+            'email': email,
+            'password': password,
+        };
+
+        $.ajax({
+            method: "post",
+            url: "../../api/login",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(data)
+        }).done(function (data) {
+            if (data == "Success") {
+                window.location.href = "../../Home/Index";
+            }
+            console.log(data);
+        });
+    })
+  })
+    </script>

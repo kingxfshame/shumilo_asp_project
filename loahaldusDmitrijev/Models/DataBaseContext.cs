@@ -18,7 +18,7 @@ namespace shumilo_asp_project.Models
 
             Users.Add(new User()
             {
-                login = "admin",
+                login = "artur.kexpa@gmail.com",
                 password = Hash.ComputeSha256Hash("admin"),
                 roleID = 2,
             });

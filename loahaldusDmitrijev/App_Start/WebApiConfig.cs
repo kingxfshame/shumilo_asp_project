@@ -18,7 +18,7 @@ namespace shumilo_asp_project
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
+                routeTemplate: WebApiConfig.UrlPrefix + "/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
         }
