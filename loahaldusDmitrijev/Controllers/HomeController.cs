@@ -26,5 +26,11 @@ namespace shumilo_asp_project.Controllers
             ViewBag.Title = "Login Page";
             return View();
         }
+        public ActionResult LogOut()
+        {
+            Session["email"] = "";
+
+            return View("index");
+        }
     }
 }
