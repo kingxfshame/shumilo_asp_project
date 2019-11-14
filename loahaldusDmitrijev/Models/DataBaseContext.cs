@@ -28,6 +28,8 @@ namespace shumilo_asp_project.Models
             //    eestoni_nimi = "Artur",
             //    english_nimi = "Arthur",
             //    sex = "Male",
+            //    status = "accept",
+            //    who_added = "artur.kexpa@gmail.com",
 
             //});
             //Nimed.Add(new Nimi()
@@ -35,7 +37,8 @@ namespace shumilo_asp_project.Models
             //    eestoni_nimi = "Vassili",
             //    english_nimi = "Vasiliy",
             //    sex = "Male",
-
+            //    status = "accept",
+            //    who_added = "artur.kexpa@gmail.com",
             //});
 
             //Nimed.Add(new Nimi()
@@ -43,7 +46,8 @@ namespace shumilo_asp_project.Models
             //    eestoni_nimi = "Anna",
             //    english_nimi = "Anya",
             //    sex = "Female",
-
+            //    status = "accept",
+            //    who_added = "artur.kexpa@gmail.com",
             //});
 
 

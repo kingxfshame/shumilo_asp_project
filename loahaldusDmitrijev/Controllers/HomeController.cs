@@ -34,5 +34,14 @@ namespace shumilo_asp_project.Controllers
 
             return View("index");
         }
+        public ActionResult Profile()
+        {
+            DataBaseContext db = new DataBaseContext();
+            ViewBag.user = db.Users;
+            ViewBag.nimed = db.Nimed;
+            ViewBag.Title = "Profile Page";
+            return View();
+        }
     }
+
 }

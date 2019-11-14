@@ -1,0 +1,154 @@
+﻿
+@{
+    ViewBag.Title = "Profile";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="jumbotron">
+                <h4 class="display-4" style="text-align:center;">
+                    My profile
+                </h4>
+
+            </div>
+        </div>
+        <div class="col-12">
+            <hr />
+        </div>
+        <div class="col-12">
+            <h3>Account</h3>
+            @if (Convert.ToInt32(Session["roleID"]) == 2)
+            {
+
+                <span class="badge badge-warning">Admin</span>
+                <span class="badge badge-secondary">User</span>
+            }
+            else
+            {
+                <span class="badge badge-secondary">User</span>
+            }
+            <br />
+            <br />
+            <form id="newpassword">
+                <div class="form-group row">
+                    <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
+                    <div class="col-sm-10">
+                        <input type="text" readonly class="form-control-plaintext" id="email" value="@Session["email"]">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Old Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="oldpassword" placeholder="Old Password">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">New Password</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control" id="newpass" placeholder="New Password">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-12">
+                        <button type="submit" class="btn btn-primary" style="margin-left:20vh;">
+                            Update Password   <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-12">
+            <hr />
+        </div>
+        <div class="col-12">
+            <h3>
+                Suggest a new name
+            </h3>
+        </div>
+        <div class="col-12">
+            <hr />
+        </div>
+        <div class="col-12">
+            <h3>
+                Your suggested names
+            </h3>
+
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col"> Name in native language</th>
+                        <th scope="col">Name in a foreign language</th>
+                        <th scope="col">Sex</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var x in ViewBag.nimed)
+                    {
+                        string klass = "";
+                        if (x.who_added == Session["email"].ToString())
+                        {
+                            if (x.status == "accept")
+                            {
+                                klass = "table-success";
+                            }
+                            else if (x.status == "pending")
+                            {
+                                klass = "table-warning";
+                            }
+                            else
+                            {
+                                klass = "table-error";
+                            }
+                        <tr class="@klass">
+                            <th scope="row">@x.ID</th>
+                            <td>@x.eestoni_nimi</td>
+                            <td>@x.english_nimi</td>
+                            <td>@x.sex</td>
+                        </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+
+
+    $('#newpassword').submit(function (e) {
+         // выключает перезапуск страницы
+        e.preventDefault(); // выключает перезапуск страницы
+        const email = $('#email').val();
+        const oldpassword = $('#oldpassword').val();
+        const newpassword = $('#newpass').val();
+        const data = {
+            'email': email,
+            'oldpassword': oldpassword,
+            'newpassword': newpassword,
+        };
+
+        $.ajax({
+            method: "put",
+            url: "../../api/user",
+            contentType: "application/json",
+            dataType: "json",
+            data: JSON.stringify(data)
+        }).done(function (data) {
+            if (data == "Success") {
+                alert("You have successfully changed your password");
+                window.location.href = "../../Home/Profile";
+            }
+            console.log(data);
+        });
+    })
+  })
+</script>

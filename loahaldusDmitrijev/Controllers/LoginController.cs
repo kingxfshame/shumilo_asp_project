@@ -14,9 +14,9 @@ namespace shumilo_asp_project.Controllers
         private DataBaseContext db = new DataBaseContext();
         public string Post(LoginUser user)
         {
-            string result = "";
-            if (user.password == null) result = "Password field are null";
-            else if (user.email == null) result = "Email field are null";
+            string result = "alala";
+            if (user.password == "") result = "Password field are null";
+            else if (user.email == "") result = "Email field are null";
             else
             {
                 if((db.Users.Where(x => x.login == user.email).FirstOrDefault() != null)){
@@ -25,8 +25,12 @@ namespace shumilo_asp_project.Controllers
                     if ((db.Users.Where(x => x.login == user.email).FirstOrDefault().password == password))
                     {
                         HttpContext.Current.Session["email"] = user.email;
-                        HttpContext.Current.Session["roleID"] = user.roleID;
+                        HttpContext.Current.Session["roleID"] = db.Users.Where(x => x.login == user.email).FirstOrDefault().roleID;
                         result = "Success";
+                    }
+                    else
+                    {
+                        result = "test";
                     }
                 }
                 else

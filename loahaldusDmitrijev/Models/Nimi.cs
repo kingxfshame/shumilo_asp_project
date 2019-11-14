@@ -14,5 +14,7 @@ namespace shumilo_asp_project.Models
         public string eestoni_nimi { get; set; }
         public string english_nimi { get; set; }
         public string sex { get; set; }
+        public string status { get; set; }
+        public string who_added { get; set; }
     }
 }

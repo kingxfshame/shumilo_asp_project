@@ -200,6 +200,7 @@
     <Compile Include="Models\DataBaseContext.cs" />
     <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\Nimi.cs" />
+    <Compile Include="Models\PasswordChange.cs" />
     <Compile Include="Models\RegisterUser.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -255,6 +256,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Profile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -20,18 +20,52 @@ namespace shumilo_asp_project.Controllers
             else if (db.Users.Where(x => x.login == registerUser.email).FirstOrDefault() != null) result = "This user already exists";
             else
             {
-                HttpContext.Current.Session["email"] = registerUser.email;
+                if (registerUser.email == "" || registerUser.password == "" || registerUser.password_second == "") return "some field is not filled";
+                else
+                {
+                    HttpContext.Current.Session["email"] = registerUser.email;
 
-                string password = registerUser.password;
-                result = "Success";
-                User user = new User();
-                user.login = registerUser.email;
-                user.password = Hash.ComputeSha256Hash(password);
-                user.roleID = 1;
-                db.Users.Add(user);
-                db.SaveChanges();
+                    string password = registerUser.password;
+                    result = "Success";
+                    User user = new User();
+                    user.login = registerUser.email;
+                    user.password = Hash.ComputeSha256Hash(password);
+                    user.roleID = 1;
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                }
+
 
             }
+            return result;
+        }
+        public string Put(PasswordChange user)
+        {
+            string result = "";
+
+            string oldpassword = user.oldpassword;
+            oldpassword = Hash.ComputeSha256Hash(oldpassword);
+
+            string newpassword = user.newpassword;
+            newpassword = Hash.ComputeSha256Hash(newpassword);
+
+            if (user.oldpassword == "") result = "OldPassword null";
+            else if (user.newpassword == "") result = "NewPassword null";
+            else
+            {
+                if ((db.Users.Where(x => x.login == user.email).FirstOrDefault().password == oldpassword))
+                {
+                    User user_ = db.Users.Where(x => x.login == user.email).FirstOrDefault();
+                    user_.password = newpassword;
+                    db.SaveChanges();
+                    result = "Sucess";
+                }
+                else
+                {
+                    result = "Old password Wrong";
+                }
+            }
+
             return result;
         }
     }
